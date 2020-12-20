@@ -6,14 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour
 {
-    private Camera _mainCam;
-
     private ItemBehaviour _item;
-
-    #region Interface Implementations
-
-    
-    #endregion
 
     protected void Current(ItemBehaviour item)
     {

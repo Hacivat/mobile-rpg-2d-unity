@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public ItemBehaviour currentItem;
     private Camera _mainCam;
@@ -12,20 +12,18 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         _mainCam = Camera.main;
 
         if (currentItem)
+        {
             currentItem = Instantiate(currentItem, transform.position, Quaternion.identity);
-
+            currentItem.SetCurrentInventorySlot(this);
+        }
     }
     
     public virtual void Positioning(ItemBehaviour item) {
         item.transform.position = transform.position;
+        item.SetCurrentInventorySlot(this);
     }
 
     #region Interface Implementations
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnBeginDrag" + eventData.position);
-    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -34,18 +32,18 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         currentItem.transform.position = newPosition;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
     {
-        RaycastHit hit;
         int layer = LayerMask.GetMask("InventorySlot");
-        Ray ray = _mainCam.ScreenPointToRay(eventData.position);
-        if (Physics.Raycast(ray, out hit, 20, layer))
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero, 20f, layer);
+        if (hit.collider)
         {
-            if (hit.collider)
-            {
-                InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
-                inventorySlot.SetCurrentItem(currentItem);
-            }
+            InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
+            inventorySlot.SetCurrentItem(currentItem);
+        }
+        else
+        {
+            currentItem.transform.position = currentItem.currentInventorySlot.transform.position;
         }
     }
 

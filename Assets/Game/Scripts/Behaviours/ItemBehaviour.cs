@@ -5,15 +5,9 @@ public class ItemBehaviour : Item
     public ItemSO data;
     public InventorySlot currentInventorySlot;
 
-    ItemBehaviour()
+    public void SetCurrentInventorySlot(InventorySlot inventorySlot)
     {
-        Current(this);
-    }
-
-
-    private void Awake()
-    {
-           
+        currentInventorySlot = inventorySlot;
     }
 
     public void ApplyMove(InventorySlot inventorySlot) {

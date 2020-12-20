@@ -21,7 +21,7 @@ public class InventorySlotBehaviour : InventorySlot
             }
 
             Positioning(item);
-
+            item.transform.parent = transform;
             item.ApplyMove(this);
             return;
         }
@@ -29,7 +29,6 @@ public class InventorySlotBehaviour : InventorySlot
         if (currentItem.data.type == item.data.type)
         {
             currentItem.data.amount += item.data.amount;
-
             Destroy(item.transform);
             return;
         }
