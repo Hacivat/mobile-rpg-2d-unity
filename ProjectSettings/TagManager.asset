@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - InventorySlot
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Inventory
+    uniqueID: 1045486039
+    locked: 0
+  - name: Item
+    uniqueID: 1666879347
     locked: 0
