@@ -10,36 +10,23 @@ public class InventorySlotBehaviour : InventorySlot
         return currentItem;
     }
 
-    public void SetCurrentItem(ItemBehaviour item)
+    public bool SetCurrentItem(ItemBehaviour item)
     {
         if (!currentItem)
         {
-            if (!item.currentInventorySlot)
-            {
-                Instantiate(item.gameObject, transform.position, Quaternion.identity);
-                return;
-            }
-
-            Positioning(item);
-            item.transform.parent = transform;
-            item.ApplyMove(this);
-            return;
+            Repositioning(item, this);
+            return true;
         }
 
-        if (currentItem.data.type == item.data.type)
+        if (currentItem)
         {
-            currentItem.data.amount += item.data.amount;
-            Destroy(item.transform);
-            return;
+            currentItem.SetCurrentInventorySlot(item.currentInventorySlot);
+            
+            Repositioning(currentItem, item.currentInventorySlot);
+            Repositioning(item, this);
+            return true;
         }
 
-        if (currentItem.data.type != item.data.type)
-        {
-            Positioning(item);
-
-            item.currentInventorySlot.Positioning(currentItem);
-            item.ApplyMove(this);
-            return;
-        }
+        return false;
     }
 }

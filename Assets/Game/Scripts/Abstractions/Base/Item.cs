@@ -6,11 +6,6 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour
 {
-    private ItemBehaviour _item;
-
-    protected void Current(ItemBehaviour item)
-    {
-        _item = item;
-    }
+    
 }
 

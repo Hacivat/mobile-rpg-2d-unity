@@ -7,8 +7,10 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 {
     public ItemBehaviour currentItem;
     private Camera _mainCam;
+    private int _layer;
     private void Awake()
     {
+        _layer = LayerMask.GetMask("InventorySlot");
         _mainCam = Camera.main;
 
         if (currentItem)
@@ -18,9 +20,10 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         }
     }
     
-    public virtual void Positioning(ItemBehaviour item) {
-        item.transform.position = transform.position;
-        item.SetCurrentInventorySlot(this);
+    public virtual void Repositioning(ItemBehaviour item, InventorySlot inventorySlot) {
+        currentItem = item;
+        item.transform.position = inventorySlot.transform.position;
+        item.SetCurrentInventorySlot(inventorySlot);
     }
 
     #region Interface Implementations
@@ -34,12 +37,12 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        int layer = LayerMask.GetMask("InventorySlot");
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero, 20f, layer);
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero, 20f, _layer);
         if (hit.collider)
         {
             InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
-            inventorySlot.SetCurrentItem(currentItem);
+            if (inventorySlot.SetCurrentItem(currentItem))
+                currentItem = null;
         }
         else
         {

@@ -9,9 +9,4 @@ public class ItemBehaviour : Item
     {
         currentInventorySlot = inventorySlot;
     }
-
-    public void ApplyMove(InventorySlot inventorySlot) {
-        if (inventorySlot)
-            currentInventorySlot = inventorySlot;
-    }
 }
