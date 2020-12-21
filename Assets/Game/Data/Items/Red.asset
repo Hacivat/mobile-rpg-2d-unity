@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13c6eab3b0b45834f91307bf3c25fea1, type: 3}
-  m_Name: CommonItem
+  m_Name: Red
   m_EditorClassIdentifier: 
   type: 0
-  itemName: Rock
+  itemName: Red
   amount: 1
-  description: Common item.
+  description: Red Item.
   weight: 0

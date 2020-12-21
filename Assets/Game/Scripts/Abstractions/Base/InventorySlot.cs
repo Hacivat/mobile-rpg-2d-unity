@@ -33,6 +33,11 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         oldItem.SetCurrentInventorySlot(newInventorySlot);
     }
 
+    private void ResetItemPosition()
+    {
+        currentItem.transform.position = currentItem.currentInventorySlot.transform.position;
+    }
+
     #region Interface Implementations
 
     public void OnDrag(PointerEventData eventData)
@@ -53,7 +58,7 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         }
         else
         {
-            currentItem.transform.position = currentItem.currentInventorySlot.transform.position;
+            ResetItemPosition();
         }
     }
 

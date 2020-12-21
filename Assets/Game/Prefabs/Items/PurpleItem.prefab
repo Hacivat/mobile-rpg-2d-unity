@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7060069929855240271}
   - component: {fileID: 7060069929855240264}
   m_Layer: 0
-  m_Name: BlueItem
+  m_Name: PurpleItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.00965023, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.76552844, g: 0.21751513, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110960d7fdf3a204399f3b9605b48f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e843d60b6508e9046a9288756d36d013, type: 2}
+  data: {fileID: 11400000, guid: 65618cd908470a940ae559c54b18ac90, type: 2}
   currentInventorySlot: {fileID: 0}
 --- !u!61 &7060069929855240264
 BoxCollider2D:
