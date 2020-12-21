@@ -10,23 +10,21 @@ public class InventorySlotBehaviour : InventorySlot
         return currentItem;
     }
 
-    public bool SetCurrentItem(ItemBehaviour item)
+    public ItemBehaviour SetCurrentItem(ItemBehaviour item)
     {
         if (!currentItem)
         {
-            Repositioning(item, this);
-            return true;
+            RepositionNewItem(item);
+            return null;
         }
 
         if (currentItem)
         {
-            currentItem.SetCurrentInventorySlot(item.currentInventorySlot);
-            
-            Repositioning(currentItem, item.currentInventorySlot);
-            Repositioning(item, this);
-            return true;
+            RepositionOldItem(currentItem, item.currentInventorySlot);
+            RepositionNewItem(item);
+            return currentItem;
         }
 
-        return false;
+        return null;
     }
 }

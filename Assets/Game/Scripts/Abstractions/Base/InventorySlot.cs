@@ -20,10 +20,17 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         }
     }
     
-    public virtual void Repositioning(ItemBehaviour item, InventorySlot inventorySlot) {
+    public void RepositionNewItem(ItemBehaviour item) {
         currentItem = item;
-        item.transform.position = inventorySlot.transform.position;
-        item.SetCurrentInventorySlot(inventorySlot);
+        item.transform.position = transform.position;
+        item.SetCurrentInventorySlot(this);
+    }
+
+    public void RepositionOldItem(ItemBehaviour oldItem, InventorySlot newInventorySlot)
+    {
+        newInventorySlot.currentItem = oldItem;
+        oldItem.transform.position = newInventorySlot.transform.position;
+        oldItem.SetCurrentInventorySlot(newInventorySlot);
     }
 
     #region Interface Implementations
@@ -41,7 +48,7 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         if (hit.collider)
         {
             InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
-            if (inventorySlot.SetCurrentItem(currentItem))
+            if(!inventorySlot.SetCurrentItem(currentItem))
                 currentItem = null;
         }
         else
