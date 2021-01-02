@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c6eab3b0b45834f91307bf3c25fea1, type: 3}
   m_Name: "Blu\u0131e"
   m_EditorClassIdentifier: 
+  effects:
+  - targetEffect: 4
+    effectValue: 2
+  - targetEffect: 5
+    effectValue: 3
   type: 0
   itemName: Blue
   amount: 1

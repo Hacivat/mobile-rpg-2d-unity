@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
+    public enum InventoryType { Inventory, Character, Drop };
+    [SerializeField] private InventoryType type = InventoryType.Inventory;
+
     public ItemBehaviour currentItem;
     private Camera _mainCam;
     private int _layer;
