@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 90559743}
   - component: {fileID: 90559742}
   - component: {fileID: 90559741}
+  - component: {fileID: 90559744}
   m_Layer: 0
   m_Name: DexVal
   m_TagString: Untagged
@@ -298,6 +299,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &90559744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90559739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
 --- !u!1 &98389626
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +603,7 @@ GameObject:
   - component: {fileID: 205874478}
   - component: {fileID: 205874477}
   - component: {fileID: 205874476}
+  - component: {fileID: 205874479}
   m_Layer: 0
   m_Name: IntVal
   m_TagString: Untagged
@@ -752,6 +767,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &205874479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205874474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 3
 --- !u!1 &259544782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752872368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5457494, y: 2.7006602, z: 1.5992893}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1331,6 +1359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e364eafd00e7f5f449fbb1fdc1484171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 20
+  _strength: 10
+  _dexterity: 5
+  _intellect: 5
 --- !u!1 &799286607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +1768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Strength: '
+  m_text: 'Intelligent:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2576,6 +2608,7 @@ GameObject:
   - component: {fileID: 2040277398}
   - component: {fileID: 2040277397}
   - component: {fileID: 2040277396}
+  - component: {fileID: 2040277399}
   m_Layer: 0
   m_Name: StrVal
   m_TagString: Untagged
@@ -2739,6 +2772,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2040277399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040277394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
 --- !u!1 &2078148817
 GameObject:
   m_ObjectHideFlags: 0
