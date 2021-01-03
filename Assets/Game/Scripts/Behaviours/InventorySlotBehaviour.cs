@@ -25,13 +25,6 @@ public class InventorySlotBehaviour : InventorySlot
             return currentItem;
         }
 
-        UpdateStats(item);
-
         return null;
-    }
-
-    private void UpdateStats(ItemBehaviour item)
-    {
-        //TODO: UpdateStats
     }
 }

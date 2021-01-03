@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
+    public event Action ItemEffectApplied;
     public enum InventoryType { Inventory, Character, Drop };
-    [SerializeField] private InventoryType type = InventoryType.Inventory;
+    public InventoryType Type = InventoryType.Inventory;
 
     public ItemBehaviour currentItem;
     private Camera _mainCam;
@@ -27,6 +29,9 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         currentItem = item;
         item.transform.position = transform.position;
         item.SetCurrentInventorySlot(this);
+
+        if (Type == InventoryType.Character)
+            ItemEffectApplied?.Invoke();
     }
 
     public void RepositionOldItem(ItemBehaviour oldItem, InventorySlot newInventorySlot)
@@ -67,8 +72,9 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown" + eventData.position);
+        //Debug.Log("OnPointerDown" + eventData.position);
     }
+
 
     #endregion
 }

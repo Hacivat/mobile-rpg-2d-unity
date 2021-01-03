@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: "Blu\u0131e"
   m_EditorClassIdentifier: 
   effects:
-  - targetEffect: 4
-    effectValue: 2
-  - targetEffect: 5
+  - targetEffect: 3
     effectValue: 3
   type: 0
   itemName: Blue

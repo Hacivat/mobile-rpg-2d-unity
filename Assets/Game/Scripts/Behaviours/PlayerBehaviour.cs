@@ -104,6 +104,72 @@ public class PlayerBehaviour : MonoBehaviour
         _maxAttack += value;
     }
 
+    public void SetStat(Stats.Type stat, int value)
+    {
+        switch (stat)
+        {
+            case Stats.Type.Health:
+                SetHealth(value);
+
+                break;
+            case Stats.Type.Strength:
+                SetStrength(value);
+
+                break;
+            case Stats.Type.Dexterity:
+                SetDexterity(value);
+
+                break;
+            case Stats.Type.Intellect:
+                SetIntellect(value);
+
+                break;
+            case Stats.Type.MinAttack:
+                SetMinAttack(value);
+
+                break;
+            case Stats.Type.MaxAttack:
+                SetMaxAttack(value);
+                
+                break;
+            default:
+                break;
+        }
+    }
+
+    public int GetStat(Stats.Type stat)
+    {
+        switch (stat)
+        {
+            case Stats.Type.Health:
+                return GetHealth();
+
+            case Stats.Type.Strength:
+                return GetStrength();
+
+            case Stats.Type.Dexterity:
+                return GetDexterity();
+
+            case Stats.Type.Intellect:
+                return GetIntellect();
+
+            case Stats.Type.MinAttack:
+                return GetMinAttack();
+
+            case Stats.Type.MaxAttack:
+                return GetMaxAttack();
+
+            default:
+                return -1;
+        }
+    }
+
+    public void ApplyItemEffects(ItemBehaviour item)
+    {
+        foreach (ItemSO.Effects effect in item.data.effects)
+            SetStat(effect.targetEffect, effect.effectValue);
+    }
+
     #endregion
 
     #region Private Methods
