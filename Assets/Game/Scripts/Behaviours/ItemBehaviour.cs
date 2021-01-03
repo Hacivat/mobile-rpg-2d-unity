@@ -10,9 +10,9 @@ public class ItemBehaviour : Item
     {
         currentInventorySlot = inventorySlot;
 
-        if(currentInventorySlot.Type == InventorySlot.InventoryType.Character)
+        if (currentInventorySlot.Type == InventorySlot.InventoryType.Character)
         {
-            PlayerBehaviour.Instance.ApplyItemEffects(this);
+            PlayerBehaviour.Instance.ApplyItemEffects();
         }
     }
 }

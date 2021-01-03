@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     public static PlayerBehaviour Instance { get; private set; }
+
+    public List<ItemBehaviour> CurrentItems = new List<ItemBehaviour>();
 
     [Header("Character Stats")]
     [SerializeField] private int _health;
@@ -164,10 +167,24 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void ApplyItemEffects(ItemBehaviour item)
+    public void ApplyItemEffects()
     {
-        foreach (ItemSO.Effects effect in item.data.effects)
-            SetStat(effect.targetEffect, effect.effectValue);
+        List<InventorySlotBehaviour> characterSlots = FindObjectsOfType<InventorySlotBehaviour>()
+                                                      .Where(slot => slot.Type == InventorySlot.InventoryType.Character).ToList();
+        foreach (InventorySlotBehaviour slot in characterSlots)
+        {
+            if (slot.currentItem)
+            {
+                foreach (ItemSO.Effects effect in slot.currentItem.data.effects)
+                {
+                    if(!CurrentItems.Contains(slot.currentItem))
+                    {
+                        CurrentItems.Add(slot.currentItem);
+                        SetStat(effect.targetEffect, effect.effectValue);
+                    }
+                }
+            }
+        }
     }
 
     #endregion
