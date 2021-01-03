@@ -30,6 +30,8 @@ public class StatBehaviour : MonoBehaviour
         _value.SetText(value);
     }
 
+    #region Subscriptions
+
     private void OnDisable()
     {
         Unregister();
@@ -53,4 +55,6 @@ public class StatBehaviour : MonoBehaviour
             if (slot.Type == InventorySlot.InventoryType.Character)
                 slot.ItemEffectApplied += SetValue;
     }
+
+    #endregion
 }
