@@ -15,7 +15,7 @@ MonoBehaviour:
   effects:
   - targetEffect: 3
     effectValue: 3
-  type: 0
+  type: 1
   itemName: Blue
   amount: 1
   description: Blue Item.

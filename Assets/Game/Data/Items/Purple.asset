@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c6eab3b0b45834f91307bf3c25fea1, type: 3}
   m_Name: Purple
   m_EditorClassIdentifier: 
+  effects: []
   type: 0
   itemName: Purple
   amount: 1

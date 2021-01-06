@@ -44,9 +44,9 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         oldItem.SetCurrentInventorySlot(newInventorySlot);
     }
 
-    private void ResetItemPosition()
+    public void ResetItemPosition()
     {
-        currentItem.transform.position = currentItem.currentInventorySlot.transform.position;
+        currentItem.transform.position = transform.position;
     }
 
     #region Interface Implementations
@@ -76,6 +76,13 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         if (hit.collider)
         {
             InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
+            
+            if(currentItem.data.type != ItemSO.ItemType.Equipment && inventorySlot.Type == InventoryType.Character)
+            {
+                ResetItemPosition();
+                return;
+            }
+
             if (!inventorySlot.SetCurrentItem(currentItem))
                 currentItem = null;
         }
