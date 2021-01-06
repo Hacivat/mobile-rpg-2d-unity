@@ -17,21 +17,24 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     {
         _layer = LayerMask.GetMask("InventorySlot");
         _mainCam = Camera.main;
+    }
 
+    private void Start()
+    {
         if (currentItem)
         {
             currentItem = Instantiate(currentItem, transform.position, Quaternion.identity);
             currentItem.SetCurrentInventorySlot(this);
         }
     }
-    
-    public void RepositionNewItem(ItemBehaviour item) {
+
+    public void RepositionNewItem(ItemBehaviour item)
+    {
         currentItem = item;
         item.transform.position = transform.position;
         item.SetCurrentInventorySlot(this);
 
-        if (Type == InventoryType.Character)
-            ItemEffectApplied?.Invoke();
+        ItemEffectApplied?.Invoke();
     }
 
     public void RepositionOldItem(ItemBehaviour oldItem, InventorySlot newInventorySlot)
@@ -50,6 +53,12 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!currentItem)
+        {
+            Debug.Log(name + " !currentItem");
+            return;
+        }
+
         Vector3 newPosition = _mainCam.ScreenToWorldPoint(eventData.position);
         newPosition.z = 0;
         currentItem.transform.position = newPosition;
@@ -57,11 +66,17 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!currentItem)
+        {
+            Debug.Log(name + " !currentItem");
+            return;
+        }
+
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero, 20f, _layer);
         if (hit.collider)
         {
             InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
-            if(!inventorySlot.SetCurrentItem(currentItem))
+            if (!inventorySlot.SetCurrentItem(currentItem))
                 currentItem = null;
         }
         else
@@ -74,7 +89,6 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     {
         //Debug.Log("OnPointerDown" + eventData.position);
     }
-
 
     #endregion
 }

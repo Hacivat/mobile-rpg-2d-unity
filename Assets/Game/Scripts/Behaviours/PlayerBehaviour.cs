@@ -20,7 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
     private int _minAttack;
     private int _maxAttack;
 
-    private void Awake() 
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -44,8 +44,8 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetHealth(int value)
     {
         _health += value;
-    
-        if(_health <= 0)
+
+        if (_health <= 0)
         {
             Kill();
         }
@@ -59,7 +59,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetStrength(int value)
     {
         _strength += value;
-        
+
         SetAttackValues();
     }
 
@@ -71,7 +71,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetDexterity(int value)
     {
         _dexterity += value;
-        
+
         SetAttackValues();
     }
 
@@ -133,7 +133,7 @@ public class PlayerBehaviour : MonoBehaviour
                 break;
             case Stats.Type.MaxAttack:
                 SetMaxAttack(value);
-                
+
                 break;
             default:
                 break;
@@ -167,17 +167,31 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    public void RemoveItemEffect(ItemBehaviour item)
+    {
+        if (CurrentItems.Contains(item))
+        {
+            foreach (ItemSO.Effects effect in item.data.effects)
+            {
+                SetStat(effect.targetEffect, -effect.effectValue);
+            }
+
+            CurrentItems.Remove(item);
+        }
+    }
+
     public void ApplyItemEffects()
     {
         List<InventorySlotBehaviour> characterSlots = FindObjectsOfType<InventorySlotBehaviour>()
                                                       .Where(slot => slot.Type == InventorySlot.InventoryType.Character).ToList();
+
         foreach (InventorySlotBehaviour slot in characterSlots)
         {
             if (slot.currentItem)
             {
                 foreach (ItemSO.Effects effect in slot.currentItem.data.effects)
                 {
-                    if(!CurrentItems.Contains(slot.currentItem))
+                    if (!CurrentItems.Contains(slot.currentItem))
                     {
                         CurrentItems.Add(slot.currentItem);
                         SetStat(effect.targetEffect, effect.effectValue);

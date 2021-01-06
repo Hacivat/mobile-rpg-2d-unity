@@ -10,6 +10,11 @@ public class ItemBehaviour : Item
     {
         currentInventorySlot = inventorySlot;
 
+        if (currentInventorySlot.Type == InventorySlot.InventoryType.Inventory)
+        {
+            PlayerBehaviour.Instance.RemoveItemEffect(this);
+        }
+
         if (currentInventorySlot.Type == InventorySlot.InventoryType.Character)
         {
             PlayerBehaviour.Instance.ApplyItemEffects();

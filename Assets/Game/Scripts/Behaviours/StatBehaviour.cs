@@ -45,15 +45,13 @@ public class StatBehaviour : MonoBehaviour
     private void Unregister()
     {
         foreach (InventorySlotBehaviour slot in _inventorySlots)
-            if (slot.Type == InventorySlot.InventoryType.Character)
-                slot.ItemEffectApplied -= SetValue;
+            slot.ItemEffectApplied -= SetValue;
     }
 
     private void Register()
     {
         foreach (InventorySlotBehaviour slot in _inventorySlots)
-            if (slot.Type == InventorySlot.InventoryType.Character)
-                slot.ItemEffectApplied += SetValue;
+            slot.ItemEffectApplied += SetValue;
     }
 
     #endregion
