@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MyBox;
 using UnityEngine;
 
 public abstract class ItemSO : ScriptableObject {
@@ -14,8 +13,13 @@ public abstract class ItemSO : ScriptableObject {
     public Effects[] effects;
 
     public ItemType type;
+
+    [ConditionalField(nameof(type), false, ItemType.Equipment)]
+    public Equipments.Type equipmentType;
+
     public string itemName;
     public int amount = 1;
     public string description;
     public float weight = .0f;
 }
+
