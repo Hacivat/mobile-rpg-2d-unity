@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBox;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     public event Action ItemEffectApplied;
     public enum InventoryType { Inventory, Character, Drop };
     public InventoryType Type = InventoryType.Inventory;
+
+    [ConditionalField(nameof(Type), false, InventoryType.Character)]
+    public Equipments.Type equipmentType = Equipments.Type.Weapon;
 
     public ItemBehaviour currentItem;
     private Camera _mainCam;
@@ -75,15 +79,23 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero, 20f, _layer);
         if (hit.collider)
         {
-            InventorySlotBehaviour inventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
-            
-            if(currentItem.data.type != ItemSO.ItemType.Equipment && inventorySlot.Type == InventoryType.Character)
+            InventorySlotBehaviour newInventorySlot = hit.collider.GetComponent<InventorySlotBehaviour>();
+
+            if (currentItem.data.type != ItemSO.ItemType.Equipment && newInventorySlot.Type == InventoryType.Character)
             {
                 ResetItemPosition();
                 return;
             }
 
-            if (!inventorySlot.SetCurrentItem(currentItem))
+            if (currentItem.data.type == ItemSO.ItemType.Equipment && 
+                newInventorySlot.Type == InventoryType.Character && 
+                newInventorySlot.equipmentType != currentItem.data.equipmentType)
+            {
+                ResetItemPosition();
+                return;
+            }
+
+            if (!newInventorySlot.SetCurrentItem(currentItem))
                 currentItem = null;
         }
         else

@@ -16,6 +16,7 @@ MonoBehaviour:
   - targetEffect: 3
     effectValue: 3
   type: 1
+  equipmentType: 8
   itemName: Blue
   amount: 1
   description: Blue Item.

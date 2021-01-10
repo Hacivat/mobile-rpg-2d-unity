@@ -9,6 +9,7 @@
         Back,
         Legs,
         Feet,
+        Hands,
         Ring,
         Necklace
     }

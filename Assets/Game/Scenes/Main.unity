@@ -208,6 +208,11 @@ PrefabInstance:
       propertyPath: Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 34621581868759676, guid: 3c8d39347ec2a8748b540aeabba1c34f,
+        type: 3}
+      propertyPath: equipmentType
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8d39347ec2a8748b540aeabba1c34f, type: 3}
 --- !u!4 &32856961 stripped
@@ -1082,6 +1087,11 @@ PrefabInstance:
       propertyPath: Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 34621581868759676, guid: 3c8d39347ec2a8748b540aeabba1c34f,
+        type: 3}
+      propertyPath: equipmentType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8d39347ec2a8748b540aeabba1c34f, type: 3}
 --- !u!4 &312196919 stripped
@@ -1580,6 +1590,11 @@ PrefabInstance:
       propertyPath: Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 34621581868759676, guid: 3c8d39347ec2a8748b540aeabba1c34f,
+        type: 3}
+      propertyPath: equipmentType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8d39347ec2a8748b540aeabba1c34f, type: 3}
 --- !u!4 &685457541 stripped
@@ -1851,6 +1866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 34621581868759676, guid: 3c8d39347ec2a8748b540aeabba1c34f,
+        type: 3}
+      propertyPath: equipmentType
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8d39347ec2a8748b540aeabba1c34f, type: 3}
@@ -2711,6 +2731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 34621581868759676, guid: 3c8d39347ec2a8748b540aeabba1c34f,
+        type: 3}
+      propertyPath: equipmentType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8d39347ec2a8748b540aeabba1c34f, type: 3}
