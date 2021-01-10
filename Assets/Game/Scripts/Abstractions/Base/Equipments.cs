@@ -11,6 +11,7 @@
         Feet,
         Hands,
         Ring,
-        Necklace
+        Necklace,
+        Relic
     }
 }

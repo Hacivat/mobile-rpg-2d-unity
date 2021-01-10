@@ -7,6 +7,7 @@
         Dexterity,
         Intellect,
         MinAttack,
-        MaxAttack
+        MaxAttack,
+        Armor
     }
 }
