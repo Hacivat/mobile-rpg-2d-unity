@@ -15,7 +15,12 @@ MonoBehaviour:
   effects:
   - targetEffect: 1
     effectValue: 5
+  - targetEffect: 4
+    effectValue: 10
+  - targetEffect: 5
+    effectValue: 15
   type: 1
+  equipmentType: 0
   itemName: Red
   amount: 1
   description: Red Item.

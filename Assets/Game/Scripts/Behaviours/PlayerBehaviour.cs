@@ -59,8 +59,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetStrength(int value)
     {
         _strength += value;
-
-        SetAttackValues();
     }
 
     public int GetDexterity()
@@ -71,8 +69,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetDexterity(int value)
     {
         _dexterity += value;
-
-        SetAttackValues();
     }
 
     public int GetIntellect()
@@ -83,8 +79,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetIntellect(int value)
     {
         _intellect += value;
-
-        SetAttackValues();
     }
 
     public int GetMinAttack()
