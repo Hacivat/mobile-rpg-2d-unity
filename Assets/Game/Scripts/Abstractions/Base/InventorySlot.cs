@@ -66,10 +66,14 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         Vector3 newPosition = _mainCam.ScreenToWorldPoint(eventData.position);
         newPosition.z = 0;
         currentItem.transform.position = newPosition;
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        currentItem.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+
         if (!currentItem)
         {
             Debug.Log(name + " !currentItem");
@@ -106,6 +110,8 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        currentItem.GetComponent<SpriteRenderer>().sortingOrder = 99;
+
         //Debug.Log("OnPointerDown" + eventData.position);
     }
 
