@@ -17,8 +17,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private int _intellect;
 
     [Header("Attack Power")]
-    private int _minAttack;
-    private int _maxAttack;
+    [SerializeField] private int _minAttack;
+    [SerializeField] private int _maxAttack;
 
     private void Awake()
     {
@@ -183,13 +183,14 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (slot.currentItem)
             {
-                foreach (ItemSO.Effects effect in slot.currentItem.data.effects)
+                if (!CurrentItems.Contains(slot.currentItem))
                 {
-                    if (!CurrentItems.Contains(slot.currentItem))
+                    foreach (ItemSO.Effects effect in slot.currentItem.data.effects)
                     {
-                        CurrentItems.Add(slot.currentItem);
                         SetStat(effect.targetEffect, effect.effectValue);
                     }
+
+                    CurrentItems.Add(slot.currentItem);
                 }
             }
         }
