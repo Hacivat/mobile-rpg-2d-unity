@@ -1,24 +1,35 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public event Action<int, int> AppliedExp;
     public static PlayerBehaviour Instance { get; private set; }
 
     public List<ItemBehaviour> CurrentItems = new List<ItemBehaviour>();
+
+    [Header("Level")]
+    [SerializeField] private int _level;
+    [SerializeField] private int _exp;
 
     [Header("Character Stats")]
     [SerializeField] private int _health;
     [SerializeField] private int _strength;
     [SerializeField] private int _dexterity;
     [SerializeField] private int _intellect;
+    [SerializeField] private int _armor;
 
     [Header("Attack Power")]
     [SerializeField] private int _minAttack;
     [SerializeField] private int _maxAttack;
+
+    [Header("Settings")]
+    [SerializeField] private float _expToLevelPercentage;
+    [SerializeField] private int _maxExp;
 
     private void Awake()
     {
@@ -30,11 +41,34 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Destroy(Instance);
         }
-
-        SetAttackValues();
     }
 
     #region Public Methods
+
+    [Button]
+    public void SetExp(int value = 50)
+    {
+        _exp += value;
+
+        if (_exp >= _maxExp)
+        {
+            _level++;
+            _maxExp += (int)Mathf.Round(_maxExp * _expToLevelPercentage);
+            _exp = 0;
+        }
+
+        AppliedExp?.Invoke(_level, _exp);
+    }
+
+    public int GetExp()
+    {
+        return _exp;
+    }
+
+    public int GetLevel()
+    {
+        return _level;
+    }
 
     public int GetHealth()
     {
@@ -101,6 +135,16 @@ public class PlayerBehaviour : MonoBehaviour
         _maxAttack += value;
     }
 
+    public int GetArmor()
+    {
+        return _armor;
+    }
+
+    public void SetArmor(int value)
+    {
+        _armor += value;
+    }
+
     public void SetStat(Stats.Type stat, int value)
     {
         switch (stat)
@@ -129,9 +173,15 @@ public class PlayerBehaviour : MonoBehaviour
                 SetMaxAttack(value);
 
                 break;
+            case Stats.Type.Exp:
+                SetExp(value);
+
+                break;
             default:
                 break;
         }
+
+        //TODO: stat update triggers will activate from here. Not in slots.
     }
 
     public int GetStat(Stats.Type stat)
@@ -155,6 +205,15 @@ public class PlayerBehaviour : MonoBehaviour
 
             case Stats.Type.MaxAttack:
                 return GetMaxAttack();
+
+            case Stats.Type.Armor:
+                return GetArmor();
+
+            case Stats.Type.Level:
+                return GetLevel();
+
+            case Stats.Type.Exp:
+                return GetExp();
 
             default:
                 return -1;

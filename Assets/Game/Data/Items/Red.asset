@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Red
   m_EditorClassIdentifier: 
   effects:
-  - targetEffect: 1
+  - targetEffect: 6
     effectValue: 5
-  - targetEffect: 4
+  - targetEffect: 7
     effectValue: 10
   - targetEffect: 5
     effectValue: 15

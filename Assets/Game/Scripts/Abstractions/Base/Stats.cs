@@ -2,6 +2,8 @@
 {
     public enum Type
     {
+        Level,
+        Exp,
         Health,
         Strength,
         Dexterity,

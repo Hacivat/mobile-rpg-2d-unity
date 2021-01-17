@@ -21,13 +21,19 @@ public class StatBehaviour : MonoBehaviour
         _inventorySlots = FindObjectsOfType<InventorySlotBehaviour>().ToList();
         Register();
 
-        SetValue();
+        SetStatValues();
     }
 
-    private void SetValue()
+    private void SetStatValues()
     {
         String value = PlayerBehaviour.Instance.GetStat(Type).ToString();
         _value.SetText(value);
+    }
+
+    private void SetLevelValues(int level, int exp)
+    {
+        String value = PlayerBehaviour.Instance.GetStat(Type).ToString();
+        _value.SetText(Type == Stats.Type.Level ? level.ToString() : exp.ToString());
     }
 
     #region Subscriptions
@@ -44,14 +50,23 @@ public class StatBehaviour : MonoBehaviour
 
     private void Unregister()
     {
-        foreach (InventorySlotBehaviour slot in _inventorySlots)
-            slot.ItemEffectApplied -= SetValue;
+        if (Type != Stats.Type.Exp && Type != Stats.Type.Level)
+            foreach (InventorySlotBehaviour slot in _inventorySlots)
+                slot.ItemEffectApplied -= SetStatValues;
+
+        else
+            PlayerBehaviour.Instance.AppliedExp -= SetLevelValues;
+
     }
 
     private void Register()
     {
-        foreach (InventorySlotBehaviour slot in _inventorySlots)
-            slot.ItemEffectApplied += SetValue;
+        if (Type != Stats.Type.Exp && Type != Stats.Type.Level)
+            foreach (InventorySlotBehaviour slot in _inventorySlots)
+                slot.ItemEffectApplied += SetStatValues;
+
+        else
+            PlayerBehaviour.Instance.AppliedExp += SetLevelValues;
     }
 
     #endregion
