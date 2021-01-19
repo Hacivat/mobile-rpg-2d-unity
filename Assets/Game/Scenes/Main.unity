@@ -3057,17 +3057,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItems: []
-  _level: 1
-  _exp: 0
-  _health: 20
-  _strength: 10
-  _dexterity: 5
-  _intellect: 5
-  _armor: 3
-  _minAttack: 5
-  _maxAttack: 10
   _expToLevelPercentage: 0.75
   _maxExp: 50
+  data:
+    Level: 1
+    Exp: 0
+    Health: 12
+    Strength: 2
+    Dexterity: 3
+    Intellect: 4
+    Armor: 5
+    MinAttack: 12
+    MaxAttack: 15
 --- !u!1 &848121233
 GameObject:
   m_ObjectHideFlags: 0

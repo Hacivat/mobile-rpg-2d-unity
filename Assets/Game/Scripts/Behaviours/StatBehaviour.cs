@@ -26,14 +26,60 @@ public class StatBehaviour : MonoBehaviour
 
     private void SetStatValues()
     {
-        String value = PlayerBehaviour.Instance.GetStat(Type).ToString();
-        _value.SetText(value);
+        _value.SetText(Value());
     }
 
-    private void SetLevelValues(int level, int exp)
+    private void SetLevelValues()
     {
-        String value = PlayerBehaviour.Instance.GetStat(Type).ToString();
-        _value.SetText(Type == Stats.Type.Level ? level.ToString() : exp.ToString());
+        _value.SetText(Type == Stats.Type.Level ? PlayerBehaviour.Instance.data.Level.ToString() : PlayerBehaviour.Instance.data.Exp.ToString());
+    }
+
+    private string Value()
+    {
+        string result = "---";
+        switch (Type)
+        {
+            case Stats.Type.Level:
+                result = PlayerBehaviour.Instance.data.Level.ToString();
+                break;
+
+            case Stats.Type.Exp:
+                result = PlayerBehaviour.Instance.data.Exp.ToString();
+                break;
+            
+            case Stats.Type.Health:
+                result = PlayerBehaviour.Instance.data.Health.ToString();
+                break;
+
+            case Stats.Type.Strength:
+                result = PlayerBehaviour.Instance.data.Strength.ToString();
+                break;
+            
+            case Stats.Type.Dexterity:
+                result = PlayerBehaviour.Instance.data.Dexterity.ToString();
+                break;
+            
+            case Stats.Type.Intellect:
+                result = PlayerBehaviour.Instance.data.Intellect.ToString();
+                break;
+            
+            case Stats.Type.MinAttack:
+                result = PlayerBehaviour.Instance.data.MinAttack.ToString();
+                break;
+            
+            case Stats.Type.MaxAttack:
+                result = PlayerBehaviour.Instance.data.MaxAttack.ToString();
+                break;
+            
+            case Stats.Type.Armor:
+                result = PlayerBehaviour.Instance.data.Armor.ToString();
+                break;
+            
+            default:
+                break;
+        }
+
+        return result;
     }
 
     #region Subscriptions

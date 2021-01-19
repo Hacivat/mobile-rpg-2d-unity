@@ -7,29 +7,37 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public event Action<int, int> AppliedExp;
+    public event Action AppliedExp;
     public static PlayerBehaviour Instance { get; private set; }
 
     public List<ItemBehaviour> CurrentItems = new List<ItemBehaviour>();
 
-    [Header("Level")]
-    [SerializeField] private int _level;
-    [SerializeField] private int _exp;
+    [Serializable]
 
-    [Header("Character Stats")]
-    [SerializeField] private int _health;
-    [SerializeField] private int _strength;
-    [SerializeField] private int _dexterity;
-    [SerializeField] private int _intellect;
-    [SerializeField] private int _armor;
+    public struct Data
+    {
+        [Header("Level")]
+        public int Level;
+        public long Exp;
 
-    [Header("Attack Power")]
-    [SerializeField] private int _minAttack;
-    [SerializeField] private int _maxAttack;
+        [Header("Character Stats")]
+        public int Health;
+        public int Strength;
+        public int Dexterity;
+        public int Intellect;
+        public int Armor;
+
+        [Header("Attack Power")]
+        public int MinAttack;
+        public int MaxAttack;
+    }
 
     [Header("Settings")]
     [SerializeField] private float _expToLevelPercentage;
     [SerializeField] private int _maxExp;
+
+    public Data data;
+
 
     private void Awake()
     {
@@ -48,38 +56,38 @@ public class PlayerBehaviour : MonoBehaviour
     [Button]
     public void SetExp(int value = 50)
     {
-        _exp += value;
+        data.Exp += value;
 
-        if (_exp >= _maxExp)
+        if (data.Exp >= _maxExp)
         {
-            _level++;
+            data.Level++;
             _maxExp += (int)Mathf.Round(_maxExp * _expToLevelPercentage);
-            _exp = 0;
+            data.Exp = 0;
         }
 
-        AppliedExp?.Invoke(_level, _exp);
+        AppliedExp?.Invoke();
     }
 
-    public int GetExp()
+    public long GetExp()
     {
-        return _exp;
+        return data.Exp;
     }
 
     public int GetLevel()
     {
-        return _level;
+        return data.Level;
     }
 
     public int GetHealth()
     {
-        return _health;
+        return data.Health;
     }
 
     public void SetHealth(int value)
     {
-        _health += value;
+        data.Health += value;
 
-        if (_health <= 0)
+        if (data.Health <= 0)
         {
             Kill();
         }
@@ -87,62 +95,67 @@ public class PlayerBehaviour : MonoBehaviour
 
     public int GetStrength()
     {
-        return _strength;
+        return data.Strength;
     }
 
     public void SetStrength(int value)
     {
-        _strength += value;
+        data.Strength += value;
     }
 
     public int GetDexterity()
     {
-        return _dexterity;
+        return data.Dexterity;
     }
 
     public void SetDexterity(int value)
     {
-        _dexterity += value;
+        data.Dexterity += value;
     }
 
     public int GetIntellect()
     {
-        return _intellect;
+        return data.Intellect;
     }
 
     public void SetIntellect(int value)
     {
-        _intellect += value;
+        data.Intellect += value;
     }
 
     public int GetMinAttack()
     {
-        return _minAttack;
+        return data.MinAttack;
     }
 
     public void SetMinAttack(int value)
     {
-        _minAttack += value;
+        data.MinAttack += value;
     }
 
     public int GetMaxAttack()
     {
-        return _maxAttack;
+        return data.MaxAttack;
     }
 
     public void SetMaxAttack(int value)
     {
-        _maxAttack += value;
+        data.MaxAttack += value;
     }
 
     public int GetArmor()
     {
-        return _armor;
+        return data.Armor;
     }
 
     public void SetArmor(int value)
     {
-        _armor += value;
+        data.Armor += value;
+    }
+
+    public Data GetData()
+    {
+        return data;
     }
 
     public void SetStat(Stats.Type stat, int value)
@@ -182,42 +195,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         //TODO: stat update triggers will activate from here. Not in slots.
-    }
-
-    public int GetStat(Stats.Type stat)
-    {
-        switch (stat)
-        {
-            case Stats.Type.Health:
-                return GetHealth();
-
-            case Stats.Type.Strength:
-                return GetStrength();
-
-            case Stats.Type.Dexterity:
-                return GetDexterity();
-
-            case Stats.Type.Intellect:
-                return GetIntellect();
-
-            case Stats.Type.MinAttack:
-                return GetMinAttack();
-
-            case Stats.Type.MaxAttack:
-                return GetMaxAttack();
-
-            case Stats.Type.Armor:
-                return GetArmor();
-
-            case Stats.Type.Level:
-                return GetLevel();
-
-            case Stats.Type.Exp:
-                return GetExp();
-
-            default:
-                return -1;
-        }
     }
 
     public void RemoveItemEffect(ItemBehaviour item)
@@ -261,12 +238,6 @@ public class PlayerBehaviour : MonoBehaviour
     private void Kill()
     {
         //Killed logic
-    }
-
-    private void SetAttackValues()
-    {
-        _minAttack = 5;
-        _maxAttack = 10;
     }
 
     #endregion
