@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects:
   - targetEffect: 5
-    effectValue: 3
+    effectValue: 5
   type: 1
   equipmentType: 9
   itemName: Blue

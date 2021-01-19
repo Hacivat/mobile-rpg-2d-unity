@@ -17,7 +17,7 @@ MonoBehaviour:
     effectValue: 5
   - targetEffect: 7
     effectValue: 10
-  - targetEffect: 5
+  - targetEffect: 3
     effectValue: 15
   type: 1
   equipmentType: 0
