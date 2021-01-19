@@ -36,8 +36,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float _expToLevelPercentage;
     [SerializeField] private int _maxExp;
 
-    public Data data;
-
+    [SerializeField] private Data _data;
+    public Data data => _data;
 
     private void Awake()
     {
@@ -56,13 +56,13 @@ public class PlayerBehaviour : MonoBehaviour
     [Button]
     public void SetExp(int value = 50)
     {
-        data.Exp += value;
+        _data.Exp += value;
 
-        if (data.Exp >= _maxExp)
+        if (_data.Exp >= _maxExp)
         {
-            data.Level++;
+            _data.Level++;
             _maxExp += (int)Mathf.Round(_maxExp * _expToLevelPercentage);
-            data.Exp = 0;
+            _data.Exp = 0;
         }
 
         AppliedExp?.Invoke();
@@ -70,24 +70,24 @@ public class PlayerBehaviour : MonoBehaviour
 
     public long GetExp()
     {
-        return data.Exp;
+        return _data.Exp;
     }
 
     public int GetLevel()
     {
-        return data.Level;
+        return _data.Level;
     }
 
     public int GetHealth()
     {
-        return data.Health;
+        return _data.Health;
     }
 
     public void SetHealth(int value)
     {
-        data.Health += value;
+        _data.Health += value;
 
-        if (data.Health <= 0)
+        if (_data.Health <= 0)
         {
             Kill();
         }
@@ -95,67 +95,67 @@ public class PlayerBehaviour : MonoBehaviour
 
     public int GetStrength()
     {
-        return data.Strength;
+        return _data.Strength;
     }
 
     public void SetStrength(int value)
     {
-        data.Strength += value;
+        _data.Strength += value;
     }
 
     public int GetDexterity()
     {
-        return data.Dexterity;
+        return _data.Dexterity;
     }
 
     public void SetDexterity(int value)
     {
-        data.Dexterity += value;
+        _data.Dexterity += value;
     }
 
     public int GetIntellect()
     {
-        return data.Intellect;
+        return _data.Intellect;
     }
 
     public void SetIntellect(int value)
     {
-        data.Intellect += value;
+        _data.Intellect += value;
     }
 
     public int GetMinAttack()
     {
-        return data.MinAttack;
+        return _data.MinAttack;
     }
 
     public void SetMinAttack(int value)
     {
-        data.MinAttack += value;
+        _data.MinAttack += value;
     }
 
     public int GetMaxAttack()
     {
-        return data.MaxAttack;
+        return _data.MaxAttack;
     }
 
     public void SetMaxAttack(int value)
     {
-        data.MaxAttack += value;
+        _data.MaxAttack += value;
     }
 
     public int GetArmor()
     {
-        return data.Armor;
+        return _data.Armor;
     }
 
     public void SetArmor(int value)
     {
-        data.Armor += value;
+        _data.Armor += value;
     }
 
     public Data GetData()
     {
-        return data;
+        return _data;
     }
 
     public void SetStat(Stats.Type stat, int value)
