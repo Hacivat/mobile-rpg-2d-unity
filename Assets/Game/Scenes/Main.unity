@@ -2400,7 +2400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_MaxRayIntersections: 0
 --- !u!20 &519420031
 Camera:
@@ -5288,9 +5288,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1339034930}
   - component: {fileID: 1339034932}
-  - component: {fileID: 1339034933}
   - component: {fileID: 1339034931}
-  m_Layer: 0
+  - component: {fileID: 1339034933}
+  m_Layer: 9
   m_Name: TrainButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6098,7 +6098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489609156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1, y: -6.03, z: 0}
+  m_LocalPosition: {x: -0.33, y: -7.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533664482}
