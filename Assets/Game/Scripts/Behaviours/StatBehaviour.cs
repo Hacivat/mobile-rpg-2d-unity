@@ -74,7 +74,11 @@ public class StatBehaviour : MonoBehaviour
             case Stats.Type.Armor:
                 result = PlayerBehaviour.Instance.data.Armor.ToString();
                 break;
-            
+
+            case Stats.Type.Gold:
+                result = PlayerBehaviour.Instance.data.Gold.ToString();
+                break;
+
             default:
                 break;
         }

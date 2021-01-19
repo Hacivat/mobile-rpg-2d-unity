@@ -13,7 +13,6 @@ public class PlayerBehaviour : MonoBehaviour
     public List<ItemBehaviour> CurrentItems = new List<ItemBehaviour>();
 
     [Serializable]
-
     public struct Data
     {
         [Header("Level")]
@@ -30,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour
         [Header("Attack Power")]
         public int MinAttack;
         public int MaxAttack;
+
+        [Header("Currency")]
+        public long Gold;
     }
 
     [Header("Settings")]
@@ -153,9 +155,14 @@ public class PlayerBehaviour : MonoBehaviour
         _data.Armor += value;
     }
 
-    public Data GetData()
+    public long GetGold()
     {
-        return _data;
+        return _data.Gold;
+    }
+
+    public void SetGold(long value)
+    {
+        _data.Gold += value;
     }
 
     public void SetStat(Stats.Type stat, int value)

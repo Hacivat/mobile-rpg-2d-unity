@@ -10,6 +10,7 @@
         Intellect,
         MinAttack,
         MaxAttack,
-        Armor
+        Armor,
+        Gold
     }
 }
