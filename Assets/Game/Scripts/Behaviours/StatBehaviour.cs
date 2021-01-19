@@ -83,6 +83,7 @@ public class StatBehaviour : MonoBehaviour
                 break;
         }
 
+
         return result;
     }
 
@@ -102,7 +103,7 @@ public class StatBehaviour : MonoBehaviour
     {
         if (Type != Stats.Type.Exp && Type != Stats.Type.Level)
             foreach (InventorySlotBehaviour slot in _inventorySlots)
-                slot.ItemEffectApplied -= SetStatValues;
+                PlayerBehaviour.Instance.ItemEffectApplied -= SetStatValues;
 
         else
             PlayerBehaviour.Instance.AppliedExp -= SetLevelValues;
@@ -113,7 +114,7 @@ public class StatBehaviour : MonoBehaviour
     {
         if (Type != Stats.Type.Exp && Type != Stats.Type.Level)
             foreach (InventorySlotBehaviour slot in _inventorySlots)
-                slot.ItemEffectApplied += SetStatValues;
+                PlayerBehaviour.Instance.ItemEffectApplied += SetStatValues;
 
         else
             PlayerBehaviour.Instance.AppliedExp += SetLevelValues;

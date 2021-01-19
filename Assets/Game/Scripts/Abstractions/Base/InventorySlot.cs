@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public event Action ItemEffectApplied;
     public enum InventoryType { Inventory, Character, Drop };
     public InventoryType Type = InventoryType.Inventory;
 
@@ -38,7 +37,6 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         item.transform.position = transform.position;
         item.SetCurrentInventorySlot(this);
 
-        ItemEffectApplied?.Invoke();
     }
 
     public void RepositionOldItem(ItemBehaviour oldItem, InventorySlot newInventorySlot)

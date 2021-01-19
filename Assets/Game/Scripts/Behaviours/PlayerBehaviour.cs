@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public event Action ItemEffectApplied;
+
     public event Action AppliedExp;
     public static PlayerBehaviour Instance { get; private set; }
 
@@ -201,7 +203,7 @@ public class PlayerBehaviour : MonoBehaviour
                 break;
         }
 
-        //TODO: stat update triggers will activate from here. Not in slots.
+        ItemEffectApplied?.Invoke();
     }
 
     public void RemoveItemEffect(ItemBehaviour item)
