@@ -9,9 +9,11 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
     private StatBehaviour _stat;
     private TextMeshPro _text;
     private int _trainCost = 5;
-    
+    private int _startCost;
+
     private void Start()
     {
+        _startCost = _trainCost;
         _stat = transform.parent.Find("val").GetComponent<StatBehaviour>();
         _text = transform.Find("Text").GetComponent<TextMeshPro>();
         
@@ -29,9 +31,29 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
 
     private void CalculateCost()
     {
+        _trainCost = _startCost;
+
         for (int i = 1; i < _stat.StatValue + 1; i++)
         {
-            _trainCost += Mathf.RoundToInt(_trainCost * .8f);
+            if(_trainCost <= 100)
+            {
+                _trainCost += Mathf.RoundToInt(9);
+            }
+
+            else if (_trainCost <= 1000)
+            {
+                _trainCost += Mathf.RoundToInt(89);
+            }
+
+            else if (_trainCost <= 25000)
+            {
+                _trainCost += Mathf.RoundToInt(541);
+            }
+
+            else
+            {
+                _trainCost += Mathf.RoundToInt(874);
+            }
         }
     }
 
