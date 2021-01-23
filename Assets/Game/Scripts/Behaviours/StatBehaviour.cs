@@ -10,7 +10,6 @@ public class StatBehaviour : MonoBehaviour
     private TextMeshPro _value;
     public Stats.Type Type;
     private List<InventorySlotBehaviour> _inventorySlots;
-    public int StatValue => Convert.ToInt32(_value.text);
 
     private void Awake()
     {
@@ -23,6 +22,11 @@ public class StatBehaviour : MonoBehaviour
         Register();
 
         SetStatValues();
+    }
+
+    public int GetTextValue()
+    {
+        return Convert.ToInt32(_value.text);
     }
 
     private void SetStatValues()

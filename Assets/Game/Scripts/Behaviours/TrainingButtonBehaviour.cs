@@ -16,9 +16,13 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
         _startCost = _trainCost;
         _stat = transform.parent.Find("val").GetComponent<StatBehaviour>();
         _text = transform.Find("Text").GetComponent<TextMeshPro>();
-        
-        CalculateCost();
-        _text.SetText(_trainCost.ToString());
+
+        StartCoroutine(SetOnStartRoutine());
+        IEnumerator SetOnStartRoutine()
+        {
+            yield return new WaitForSeconds(.2f);
+            CalculateCost();
+        }
     }
 
     private void Train()
@@ -26,16 +30,16 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
         PlayerBehaviour.Instance.SetStat(_stat.Type, 1);
         //PlayerBehaviour.Instance.SetStat(Stats.Type.Gold, -_trainCost);
         CalculateCost();
-        _text.SetText(_trainCost.ToString());
     }
 
     private void CalculateCost()
     {
         _trainCost = _startCost;
 
-        for (int i = 1; i < _stat.StatValue + 1; i++)
+        int count = _stat.GetTextValue();
+        for (int i = 1; i < count + 1; i++)
         {
-            if(_trainCost <= 100)
+            if (_trainCost <= 100)
             {
                 _trainCost += Mathf.RoundToInt(9);
             }
@@ -55,6 +59,8 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
                 _trainCost += Mathf.RoundToInt(874);
             }
         }
+
+        _text.SetText(_trainCost.ToString());
     }
 
     public void OnPointerDown(PointerEventData eventData)
