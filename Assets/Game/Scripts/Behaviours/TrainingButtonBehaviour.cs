@@ -29,7 +29,7 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
     {
         if(PlayerBehaviour.Instance.baseData.Gold >= _trainCost)
         {
-            PlayerBehaviour.Instance.SetStat(_stat.Type, 1);
+            PlayerBehaviour.Instance.SetStat(_stat.Type, 1, true);
             PlayerBehaviour.Instance.SetStat(Stats.Type.Gold, -_trainCost);
             CalculateCost();
         }

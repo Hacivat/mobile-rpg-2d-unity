@@ -2772,7 +2772,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Character Stats
+  m_text: 'Character Base Stats
 
 '
   m_isRightToLeft: 0
@@ -3964,7 +3964,7 @@ MonoBehaviour:
     Armor: 12
     MinAttack: 1
     MaxAttack: 4
-    Gold: 123
+    Gold: 123213
 --- !u!1 &848121233
 GameObject:
   m_ObjectHideFlags: 0
