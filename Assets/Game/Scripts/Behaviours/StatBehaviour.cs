@@ -36,7 +36,7 @@ public class StatBehaviour : MonoBehaviour
 
     private void SetLevelValues()
     {
-        _value.SetText(Type == Stats.Type.Level ? PlayerBehaviour.Instance.data.Level.ToString() : PlayerBehaviour.Instance.data.Exp.ToString());
+        _value.SetText(Type == Stats.Type.Level ? PlayerBehaviour.Instance.baseData.Level.ToString() : PlayerBehaviour.Instance.baseData.Exp.ToString());
     }
 
     private string Value()
@@ -45,49 +45,48 @@ public class StatBehaviour : MonoBehaviour
         switch (Type)
         {
             case Stats.Type.Level:
-                result = PlayerBehaviour.Instance.data.Level.ToString();
+                result = PlayerBehaviour.Instance.baseData.Level.ToString();
                 break;
 
             case Stats.Type.Exp:
-                result = PlayerBehaviour.Instance.data.Exp.ToString();
+                result = PlayerBehaviour.Instance.baseData.Exp.ToString();
                 break;
             
             case Stats.Type.Health:
-                result = PlayerBehaviour.Instance.data.Health.ToString();
+                result = PlayerBehaviour.Instance.currentData.Health.ToString();
                 break;
 
             case Stats.Type.Strength:
-                result = PlayerBehaviour.Instance.data.Strength.ToString();
+                result = PlayerBehaviour.Instance.currentData.Strength.ToString();
                 break;
             
             case Stats.Type.Dexterity:
-                result = PlayerBehaviour.Instance.data.Dexterity.ToString();
+                result = PlayerBehaviour.Instance.currentData.Dexterity.ToString();
                 break;
             
             case Stats.Type.Intellect:
-                result = PlayerBehaviour.Instance.data.Intellect.ToString();
+                result = PlayerBehaviour.Instance.currentData.Intellect.ToString();
                 break;
             
             case Stats.Type.MinAttack:
-                result = PlayerBehaviour.Instance.data.MinAttack.ToString();
+                result = PlayerBehaviour.Instance.currentData.MinAttack.ToString();
                 break;
             
             case Stats.Type.MaxAttack:
-                result = PlayerBehaviour.Instance.data.MaxAttack.ToString();
+                result = PlayerBehaviour.Instance.currentData.MaxAttack.ToString();
                 break;
             
             case Stats.Type.Armor:
-                result = PlayerBehaviour.Instance.data.Armor.ToString();
+                result = PlayerBehaviour.Instance.currentData.Armor.ToString();
                 break;
 
             case Stats.Type.Gold:
-                result = PlayerBehaviour.Instance.data.Gold.ToString();
+                result = PlayerBehaviour.Instance.baseData.Gold.ToString();
                 break;
 
             default:
                 break;
         }
-
 
         return result;
     }

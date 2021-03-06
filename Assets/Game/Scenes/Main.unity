@@ -3947,14 +3947,14 @@ MonoBehaviour:
   CurrentItems: []
   _expToLevelPercentage: 0.75
   _maxExp: 50
-  _data:
+  _baseData:
     Level: 1
     Exp: 0
     Health: 12
     Strength: 12
     Dexterity: 12
     Intellect: 12
-    Armor: 31
+    Armor: 12
     MinAttack: 1
     MaxAttack: 4
     Gold: 123

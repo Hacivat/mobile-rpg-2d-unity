@@ -27,7 +27,7 @@ public class TrainingButtonBehaviour : MonoBehaviour, IPointerDownHandler
 
     private void Train()
     {
-        if(PlayerBehaviour.Instance.data.Gold >= _trainCost)
+        if(PlayerBehaviour.Instance.baseData.Gold >= _trainCost)
         {
             PlayerBehaviour.Instance.SetStat(_stat.Type, 1);
             PlayerBehaviour.Instance.SetStat(Stats.Type.Gold, -_trainCost);
