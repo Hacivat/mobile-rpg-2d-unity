@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 1
 --- !u!114 &36144681
 MonoBehaviour:
@@ -727,6 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 4
 --- !u!1001 &113847285
 PrefabInstance:
@@ -1206,6 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 5
 --- !u!1 &209782874
 GameObject:
@@ -1808,6 +1811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 1
   Type: 4
 --- !u!114 &316054032
 MonoBehaviour:
@@ -2097,6 +2101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 1
   Type: 2
 --- !u!114 &489803169
 MonoBehaviour:
@@ -2977,6 +2982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 9
 --- !u!114 &568255359
 MonoBehaviour:
@@ -3166,6 +3172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 6
 --- !u!114 &611520798
 MonoBehaviour:
@@ -4009,6 +4016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 2
 --- !u!114 &848121236
 MonoBehaviour:
@@ -4198,6 +4206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 0
 --- !u!114 &887571733
 MonoBehaviour:
@@ -4577,6 +4586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 7
 --- !u!114 &1014926136
 MonoBehaviour:
@@ -5216,6 +5226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 1
   Type: 3
 --- !u!114 &1213992397
 MonoBehaviour:
@@ -5586,6 +5597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 1
   Type: 5
 --- !u!114 &1350550398
 MonoBehaviour:
@@ -5898,6 +5910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 8
 --- !u!114 &1483277079
 MonoBehaviour:
@@ -8002,6 +8015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ad59bc6b372f459080254558c4529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFieldBase: 0
   Type: 3
 --- !u!1001 &2048538831
 PrefabInstance:

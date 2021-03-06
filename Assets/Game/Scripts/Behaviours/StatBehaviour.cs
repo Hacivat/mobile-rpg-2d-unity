@@ -7,9 +7,10 @@ using UnityEngine;
 
 public class StatBehaviour : MonoBehaviour
 {
+    [SerializeField] private bool _isFieldBase = false;
     private TextMeshPro _value;
-    public Stats.Type Type;
     private List<InventorySlotBehaviour> _inventorySlots;
+    public Stats.Type Type;
 
     private void Awake()
     {
@@ -42,7 +43,9 @@ public class StatBehaviour : MonoBehaviour
     private string Value()
     {
         string result = "---";
-        switch (Type)
+
+        if (_isFieldBase)
+            switch (Type)
         {
             case Stats.Type.Level:
                 result = PlayerBehaviour.Instance.baseData.Level.ToString();
@@ -53,31 +56,31 @@ public class StatBehaviour : MonoBehaviour
                 break;
             
             case Stats.Type.Health:
-                result = PlayerBehaviour.Instance.currentData.Health.ToString();
+                result = PlayerBehaviour.Instance.baseData.Health.ToString();
                 break;
 
             case Stats.Type.Strength:
-                result = PlayerBehaviour.Instance.currentData.Strength.ToString();
+                result = PlayerBehaviour.Instance.baseData.Strength.ToString();
                 break;
             
             case Stats.Type.Dexterity:
-                result = PlayerBehaviour.Instance.currentData.Dexterity.ToString();
+                result = PlayerBehaviour.Instance.baseData.Dexterity.ToString();
                 break;
             
             case Stats.Type.Intellect:
-                result = PlayerBehaviour.Instance.currentData.Intellect.ToString();
+                result = PlayerBehaviour.Instance.baseData.Intellect.ToString();
                 break;
             
             case Stats.Type.MinAttack:
-                result = PlayerBehaviour.Instance.currentData.MinAttack.ToString();
+                result = PlayerBehaviour.Instance.baseData.MinAttack.ToString();
                 break;
             
             case Stats.Type.MaxAttack:
-                result = PlayerBehaviour.Instance.currentData.MaxAttack.ToString();
+                result = PlayerBehaviour.Instance.baseData.MaxAttack.ToString();
                 break;
             
             case Stats.Type.Armor:
-                result = PlayerBehaviour.Instance.currentData.Armor.ToString();
+                result = PlayerBehaviour.Instance.baseData.Armor.ToString();
                 break;
 
             case Stats.Type.Gold:
@@ -87,6 +90,53 @@ public class StatBehaviour : MonoBehaviour
             default:
                 break;
         }
+
+        else
+            switch (Type)
+            {
+                case Stats.Type.Level:
+                    result = PlayerBehaviour.Instance.baseData.Level.ToString();
+                    break;
+
+                case Stats.Type.Exp:
+                    result = PlayerBehaviour.Instance.baseData.Exp.ToString();
+                    break;
+
+                case Stats.Type.Health:
+                    result = PlayerBehaviour.Instance.currentData.Health.ToString();
+                    break;
+
+                case Stats.Type.Strength:
+                    result = PlayerBehaviour.Instance.currentData.Strength.ToString();
+                    break;
+
+                case Stats.Type.Dexterity:
+                    result = PlayerBehaviour.Instance.currentData.Dexterity.ToString();
+                    break;
+
+                case Stats.Type.Intellect:
+                    result = PlayerBehaviour.Instance.currentData.Intellect.ToString();
+                    break;
+
+                case Stats.Type.MinAttack:
+                    result = PlayerBehaviour.Instance.currentData.MinAttack.ToString();
+                    break;
+
+                case Stats.Type.MaxAttack:
+                    result = PlayerBehaviour.Instance.currentData.MaxAttack.ToString();
+                    break;
+
+                case Stats.Type.Armor:
+                    result = PlayerBehaviour.Instance.currentData.Armor.ToString();
+                    break;
+
+                case Stats.Type.Gold:
+                    result = PlayerBehaviour.Instance.baseData.Gold.ToString();
+                    break;
+
+                default:
+                    break;
+            }
 
         return result;
     }
